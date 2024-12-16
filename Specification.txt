@@ -1,0 +1,44 @@
+Specifikation för InventoryIkeaApi
+
+Syfte:
+Vi vill skapa ett web API som hanterar möbler för en IKEA-butik. 
+API:et ska tillhandahålla funktioner för att hantera möbelgrupper, specifika möbler inom grupper, samt uppdatering och hantering av möbeldata.
+
+Funktionalitet
+
+Möbelgrupper:
+- Möjlighet att hämta alla möbler inom en viss grupp.
+- Möjlighet att hämta specifika möbler inom en viss grupp.
+- Möjlighet att lägga till nya möbler till en grupp.
+- Möjlighet att skapa nya grupper (t.ex. en "Jul" kategori vid jul).
+
+Möbelhantering:
+
+- Möjlighet att uppdatera egenskaper på möbler, såsom pris vid rea (t.ex. Black Friday).
+- Möjlighet att ta bort möbler från sortimentet.
+- Visa lagerstatus för möbler (t.ex. "I lager", "Ej i lager").
+- Visa antalet möbler som finns kvar i lager.
+
+Felhantering:
+
+Implementera en felhanteringsfabrik för att returnera felaktiga förfrågningar (bad requests) med lämpliga felmeddelanden.
+Använda Serilog för loggning av fel, initialt till en lokal fil i en mapp på datorn.
+Loggar ska sparas veckovis och en ny loggfil ska skapas varje vecka.
+
+Exempel på Möbelgrupper:
+- Belysning
+- Soffor
+- Dekorationer
+- Kök och vitvaror
+- Sängar
+- Matgrupper
+- Mattor
+- Loggning
+
+Använd Serilog för att logga fel och andra viktiga händelser.
+Loggar ska sparas i en textfil på datorn, organiserade veckovis.
+En ny textfil ska skapas varje vecka för att hålla loggarna organiserade.
+
+Testning:
+
+Testning bör göras enligt att följa TDD samt med ramverket Xunit
