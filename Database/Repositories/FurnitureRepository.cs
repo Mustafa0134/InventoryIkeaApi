@@ -11,14 +11,15 @@ namespace InventoryIkeaApi.Database.Repositories
             new Furniture { Id = 2, Name = "Led-lampa", Price = 150.00m, FurnitureGroup = new FurnitureGroup { Id = 2, Name = "Belysning" }, Status = new InventoryStatus { FurnitureId = 2, Status = "Out of Stock", Quantity = 0 } }
         };
 
-        public Furniture GetFurnitureById(int id)
+        public Task<Furniture> GetFurnitureById(int id, CancellationToken cancellationToken = default)
         {
-            return _furnitures.FirstOrDefault(f => f.Id == id);
+            var furniture = _furnitures.FirstOrDefault(f => f.Id == id);
+            return Task.FromResult(furniture);
         }
 
-        public IEnumerable<Furniture> GetAllFurniture()
+        public Task<IEnumerable<Furniture>> GetAllFurniture(CancellationToken cancellationToken = default)
         {
-            return _furnitures;
+            return Task.FromResult<IEnumerable<Furniture>>(_furnitures);
         }
     }
 }

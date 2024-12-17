@@ -7,19 +7,24 @@ namespace InventoryIkeaApi.Services
     public class FurnitureService : IFurnitureService
     {
         private readonly IFurnitureRepository _furnitureRepository;
+        private readonly IPaginationService _paginationService;
 
-        public FurnitureService(IFurnitureRepository furnitureRepository)
+        public FurnitureService(IFurnitureRepository furnitureRepository, IPaginationService paginationService)
         {
             _furnitureRepository = furnitureRepository;
+            _paginationService = paginationService;
         }
 
-        public Furniture GetFurnitureById(int id)
+        public async Task<Furniture> GetFurnitureById(int id, CancellationToken cancellationToken = default)
         {
-            return _furnitureRepository.GetFurnitureById(id);
+            return await _furnitureRepository.GetFurnitureById(id, cancellationToken);
         }
-        public IEnumerable<Furniture> GetAllFurniture()
+
+        public async Task<IEnumerable<Furniture>> GetAllFurniture(int page, int pageSize, CancellationToken cancellationToken = default)
         {
-            return _furnitureRepository.GetAllFurniture();
+            var totalCount = await _furnitureRepository.GetAllFurniture(cancellationToken);
+
+            return _paginationService.GetPage(totalCount, page, pageSize);   
         }
     }
 }

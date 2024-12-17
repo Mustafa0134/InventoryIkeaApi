@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IFurnitureRepository, FurnitureRepository>();
 builder.Services.AddScoped<IFurnitureService, FurnitureService>();
+builder.Services.AddScoped<IPaginationService, PaginationService>();
 
 var app = builder.Build();
 

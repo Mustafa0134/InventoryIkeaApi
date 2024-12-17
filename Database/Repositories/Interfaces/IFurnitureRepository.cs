@@ -4,8 +4,7 @@ namespace InventoryIkeaApi.Database.Repositories.Interfaces
 {
     public interface IFurnitureRepository
     {
-        Furniture GetFurnitureById(int id);
-
-        IEnumerable<Furniture> GetAllFurniture();
+       Task <Furniture> GetFurnitureById(int id, CancellationToken cancellationToken = default);
+       Task<IEnumerable<Furniture>> GetAllFurniture(CancellationToken cancellationToken = default);
     }
 }

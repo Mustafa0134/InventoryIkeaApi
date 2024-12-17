@@ -15,16 +15,16 @@ namespace InventoryIkeaApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllFurniture()
+        public async Task<IActionResult> GetAllFurniture(int page = 1, int pageSize = 10, CancellationToken cancellationToken = default)
         {
-            var furnitures = _furnitureService.GetAllFurniture();
+            var furnitures = await _furnitureService.GetAllFurniture(page, pageSize, cancellationToken);
             return Ok(furnitures);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetFurnitureById(int id)
+        public async Task<IActionResult> GetFurnitureById(int id, CancellationToken cancellationToken = default)
         {
-            var furniture = _furnitureService.GetFurnitureById(id);
+            var furniture = await _furnitureService.GetFurnitureById(id, cancellationToken);
             if (furniture == null)
             {
                 return NotFound();
